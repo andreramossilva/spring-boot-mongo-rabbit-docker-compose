@@ -1,0 +1,1 @@
+/home/s2it_asilva/workspace/ccs-client/build/classes/kotlin/main/br/com/uol/ccs/client/ccsclient/CcsClientApplication.class:/home/s2it_asilva/workspace/ccs-client/build/classes/kotlin/main/br/com/uol/ccs/client/ccsclient/CcsClientApplicationKt.class

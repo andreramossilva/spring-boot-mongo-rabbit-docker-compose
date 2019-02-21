@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  ccs-client-producer:
+    image: ccs-client:latest
+    container_name: ccs-client-producer
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/ccs-client
+    depends_on:
+      - mongodb
+      - rabbitmq
+    networks:
+      - ccs-client
+    ports:
+      - 8080:8080
+
+  mongodb:
+    image: mongo:3.6
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    command: mongod --smallfiles --logpath=/dev/null # --quiet
+    environment:
+      MONGODB_APPLICATION_DATABASE: ccs-client
+    networks:
+      - ccs-client
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbit
+    ports:
+      - 15672:15672
+      - 5672:5672
+    networks:
+      - ccs-client
+
+networks:
+  ccs-client:
+    driver: bridge
